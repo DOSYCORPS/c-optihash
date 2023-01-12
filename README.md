@@ -120,7 +120,7 @@ The value is `0U`.
 
 The fourth argument variable `h` is an `unsigned short int` defined as the character length of the hash digest output.
 
-The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (1U, 2U, 4U, 8U, 16U, 32U, 64U, 128U, 256U, 512U, 1024U) with the same value as defined array lengths in variables `g` and `o`.
+The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (`1U`, `2U`, `4U`, `8U`, `16U`, `32U`, `64U`, `128U`, `256U`, `512U`, `1024U`) with the same value as defined array lengths in variables `g` and `o`.
 
 The fifth argument variable `j` is an `unsigned short int` defined as the casted `size_t` result from each `fread()` iteration before passing as an argument to `AvolittyHasherA()`.
 

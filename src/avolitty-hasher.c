@@ -21,7 +21,7 @@ void AvolittyHasherB(unsigned short int *a, unsigned short int b, unsigned short
 
 	while (c != 0U) {
 		a[--c] = b;
-		b = (a[c] + a[e] + (((b + c) >> 1U) + c) & 8191) + 2U;
+		b = (a[c] + a[e] + (((b + c) >> 1U) + c) & 8191U) + 2U;
 		a[e++] = b;
 		d[c] = f[b & 15U];
 	}

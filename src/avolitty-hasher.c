@@ -1,13 +1,13 @@
-void AvolittyHasherA(signed short int *a, signed short int *b, signed short int *c, signed short int d, signed short int e, unsigned char *f) {
-	signed short int g = *b;
-	signed short int h = *c;
-	signed short int i = 0;
-	signed short int j = 0;
+void AvolittyHasherA(unsigned short int *a, unsigned short int *b, unsigned short int *c, unsigned short int d, unsigned short int e, unsigned char *f) {
+	unsigned short int g = *b;
+	unsigned short int h = *c;
+	unsigned short int i = 0U;
+	unsigned short int j = 0U;
 
 	while (e != i) {
-		g = (signed short int) f[i++] + ((((g + 2) >> 1) + g) & 8191) + 2;
+		g = (unsigned short int) f[i++] + ((((g + 2U) >> 1U) + g) & 8191U) + 2U;
 		j = h++ & d;
-		a[j] = (a[j] + g) & 1023;
+		a[j] = (a[j] + g) & 1023U;
 	}
 
 	*b = g;
@@ -15,15 +15,15 @@ void AvolittyHasherA(signed short int *a, signed short int *b, signed short int 
 	return;
 }
 
-void AvolittyHasherB(signed short int *a, signed short int b, signed short int c, signed char *d) {
-	signed short int e = 0;
-	const signed char f[16] = {48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102};
+void AvolittyHasherB(unsigned short int *a, unsigned short int b, unsigned short int c, unsigned char *d) {
+	unsigned short int e = 0U;
+	const unsigned char f[16U] = {48U, 49U, 50U, 51U, 52U, 53U, 54U, 55U, 56U, 57U, 97U, 98U, 99U, 100U, 101U, 102U};
 
-	while (c-- != 0) {
-		a[c] = b;
-		b = (a[c] + a[e] + (((b + c) >> 1) + c) & 8191) + 2;
+	while (c != 0U) {
+		a[--c] = b;
+		b = (a[c] + a[e] + (((b + c) >> 1U) + c) & 8191) + 2U;
 		a[e++] = b;
-		d[c] = f[b & 15];
+		d[c] = f[b & 15U];
 	}
 
 	return;

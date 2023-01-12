@@ -1,40 +1,72 @@
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 
-int main() {
-	FILE *a;
-	size_t b = 1024;
-	size_t c = 1;
-	size_t d = b;
-	signed short int e[16];
-	signed short int f = 16;
-	signed short int g = f;
-	signed short int h = 0;
-	signed short int i = 0;
-	signed short int *j = &g;
-	signed short int *k = &i;
-	unsigned char l[1024];
-	signed char m[16];
-	a = fopen("file", "rb");
+int main(int a, char *b[]) {
+/*
+a -> c
+b -> d
+c -> e
+d -> f
+e -> g
+f -> h
+g -> i
+h -> j
+i -> k
+j -> l
+k -> m
+l -> n
+m -> o
+*/
 
-	while (f-- != 0) {
-		e[f] = 254;
+	FILE *c;
+	size_t d = 1024;
+	size_t e = 1;
+	size_t f = d;
+	unsigned short int g[16];
+	unsigned short int h = 16U;
+	unsigned short int i = h;
+	unsigned short int j = 0U;
+	unsigned short int k = 0U;
+	unsigned short int *l = &i;
+	unsigned short int *m = &k;
+	unsigned char n[1024U];
+	unsigned char o[16U];
+
+	if (a == 1) {
+		printf("Error hashing file without required file name argument.");
+		return a;
 	}
 
-	f = --g;
+	c = fopen((const char *) b[1], (const char *) "rb");
 
-	while (b == d) {
-		d = fread(l, c, b, a);
-		h = (signed short int) d;
-		AvolittyHasherA(e, j, k, f, h, l);
+	if (c == 0) {
+		printf("Error reading file \"%s\".", b[1]);
+		return a;
 	}
 
-	fclose(a);
-	AvolittyHasherB(e, g, ++f, m);
-
-	while (f-- != 0) {
-		printf("%c", m[f]);
+	while (h != 0U) {
+		g[--h] = 254U;
 	}
 
-	return 0;
+	h = --i;
+
+	while (d == f) {
+		f = fread(n, e, d, c);
+		j = (unsigned short int) f;
+		AvolittyHasherA(g, l, m, h, j, n);
+	}
+
+	if (feof(c) == 0) {
+		printf("Error hashing file \"%s\".", b[1]);
+		return a;
+	}
+
+	fclose(c);
+	AvolittyHasherB(g, i, ++h, o);
+
+	while (h != 0U) {
+		printf("%c", o[--h]);
+	}
+
+	return a;
 }

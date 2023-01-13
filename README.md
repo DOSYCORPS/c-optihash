@@ -56,7 +56,7 @@ int main(int a, char *b[]) {
 	unsigned short int j = 0U;
 	unsigned short int k = 0U;
 	unsigned short int *l = &i;
-	unsigned short int *m = &k;
+	unsigned short int *m = &j;
 	unsigned char n[1024U];
 	unsigned char o[16U];
 
@@ -80,8 +80,8 @@ int main(int a, char *b[]) {
 
 	while (d == f) {
 		f = fread(n, e, d, c);
-		j = (unsigned short int) f;
-		AvolittyHasherA(g, l, m, h, j, n);
+		k = (unsigned short int) f;
+		AvolittyHasherA(g, l, m, h, k, n);
 	}
 
 	if (feof(c) == 0) {
@@ -112,9 +112,9 @@ The second argument variable `l` is a pointer to modify the value of the variabl
 
 The variable `i` is an `unsigned short int` defined as `h` with a default value of `16U`.
 
-The third argument variable `m` is a pointer to modify the value of the variable `i`.
+The third argument variable `m` is a pointer to modify the value of the variable `j`.
 
-The variable `i` is an `unsigned short int`.
+The variable `j` is an `unsigned short int`.
 
 The value is `0U`.
 
@@ -122,7 +122,7 @@ The fourth argument variable `h` is an `unsigned short int` defined as the chara
 
 The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (`1U`, `2U`, `4U`, `8U`, `16U`, `32U`, `64U`, `128U`, `256U`, `512U`, `1024U`) with the same value as defined array lengths in variables `g` and `o`.
 
-The fifth argument variable `j` is an `unsigned short int` defined as the casted `size_t` result from each `fread()` iteration before passing as an argument to `AvolittyHasherA()`.
+The fifth argument variable `k` is an `unsigned short int` defined as the casted `size_t` result from each `fread()` iteration before passing as an argument to `AvolittyHasherA()`.
 
 The sixth argument variable `n` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
 

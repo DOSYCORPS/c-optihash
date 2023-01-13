@@ -2,22 +2,6 @@
 #include "../src/avolitty-hasher.h"
 
 int main(int a, char *b[]) {
-/*
-a -> c
-b -> d
-c -> e
-d -> f
-e -> g
-f -> h
-g -> i
-h -> j
-i -> k
-j -> l
-k -> m
-l -> n
-m -> o
-*/
-
 	FILE *c;
 	size_t d = 1024;
 	size_t e = 1;
@@ -28,7 +12,7 @@ m -> o
 	unsigned short int j = 0U;
 	unsigned short int k = 0U;
 	unsigned short int *l = &i;
-	unsigned short int *m = &k;
+	unsigned short int *m = &j;
 	unsigned char n[1024U];
 	unsigned char o[16U];
 
@@ -52,8 +36,8 @@ m -> o
 
 	while (d == f) {
 		f = fread(n, e, d, c);
-		j = (unsigned short int) f;
-		AvolittyHasherA(g, l, m, h, j, n);
+		k = (unsigned short int) f;
+		AvolittyHasherA(g, l, m, h, k, n);
 	}
 
 	if (feof(c) == 0) {

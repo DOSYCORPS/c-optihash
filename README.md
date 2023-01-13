@@ -90,7 +90,7 @@ int main(int a, char *b[]) {
 	}
 
 	fclose(c);
-	AvolittyHasherB(g, i, ++h, o);
+	AvolittyHasherB(g, ++h, i, o);
 
 	while (h != 0U) {
 		printf("%c", o[--h]);
@@ -138,9 +138,9 @@ The minimum length is the value of the variable `h`.
 
 The first argument variable `g` is a pointer to the previous `unsigned short int` array defined as the hashed payload bytes to finalize.
 
-The second argument variable `i` is the previous value modified by the pointer `l` in each hashing iteration for entropy.
+The second argument variable `h` is the previous value defined as the output character length.
 
-The third argument variable `h` is the previous value defined as the output character length.
+The third argument variable `i` is the previous value modified by the pointer `l` in each hashing iteration for entropy.
 
 The fourth argument variable `o` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
 

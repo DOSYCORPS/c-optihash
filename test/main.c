@@ -46,7 +46,7 @@ int main(int a, char *b[]) {
 	}
 
 	fclose(c);
-	AvolittyHasherB(g, i, ++h, o);
+	AvolittyHasherB(g, ++h, i, o);
 
 	while (h != 0U) {
 		printf("%c", o[--h]);

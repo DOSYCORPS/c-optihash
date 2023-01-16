@@ -5,7 +5,7 @@ void AvolittyHasherA(unsigned short int *a, unsigned short int *b, unsigned shor
 	unsigned short int j = 0U;
 
 	while (e != i) {
-		g = (((((unsigned short int) f[i++]) + g + ((g + 2U) >> 1U)) & 8191U) + 2U);
+		g = (((((unsigned short int) f[i++]) + g + ((g + 2U) >> 1U)) & 16383U) + 2U);
 		j = (h++ & d);
 		a[j] = ((a[j] + g) & 1023U);
 	}
@@ -21,7 +21,7 @@ void AvolittyHasherB(unsigned short int *a, unsigned short int b, unsigned short
 
 	while (b != 0U) {
 		a[--b] = c;
-		c = (((a[b] + a[e] + b + ((b + c) >> 1U)) & 8191U) + 2U);
+		c = (((a[b] + a[e] + b + ((b + c) >> 1U)) & 16383U) + 2U);
 		a[e++] = c;
 		d[b] = f[c & 15U];
 	}

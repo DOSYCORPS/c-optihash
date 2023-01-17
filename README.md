@@ -42,6 +42,7 @@ cd avolitty-hasher
 The following example uses code from [test/main.c](https://github.com/avolitty/avolitty-hasher/blob/main/test/main.c) to generate hash digests with the `AvolittyHasherA()` and `AvolittyHasherB()` functions from [src/avolitty-hasher.c](https://github.com/avolitty/avolitty-hasher/blob/main/src/avolitty-hasher.c).
 
 ``` c
+#include <stddef.h>
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 

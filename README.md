@@ -50,7 +50,7 @@ int main(int a, char *b[]) {
 	size_t d = 1024;
 	size_t e = 1;
 	size_t f = d;
-	unsigned short int g[16];
+	unsigned short int g[16U];
 	unsigned short int h = 16U;
 	unsigned short int i = h;
 	unsigned short int j = 0U;

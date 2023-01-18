@@ -18,6 +18,7 @@ Create secure and variable-length checksums using C89 with a fast and unique has
 - Length variant values can be adjusted in the same hashing function
 - Memory-safe with well-defined behavior
 - Minified code
+- Outputs an array of 0xF digits for fast hash table lookups
 - Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
 
 #### Funding
@@ -94,7 +95,7 @@ int main(int a, char *b[]) {
 	AvolittyHasherB(g, ++h, i, o);
 
 	while (h != 0U) {
-		printf("%c", o[--h]);
+		printf("%x", o[--h]);
 	}
 
 	return a;
@@ -135,7 +136,7 @@ Changing the default length of `1024U` doesn't change digest output values. It o
 
 The minimum length is the value of the variable `h`.
 
-`AvolittyHasherB()` adds entropy finalization and output the hash digest as hexadecimal character bytes.
+`AvolittyHasherB()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
 
 The first argument variable `g` is a pointer to the previous `unsigned short int` array defined as the hashed payload bytes to finalize.
 

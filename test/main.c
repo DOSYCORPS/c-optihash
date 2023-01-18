@@ -50,7 +50,7 @@ int main(int a, char *b[]) {
 	AvolittyHasherB(g, ++h, i, o);
 
 	while (h != 0U) {
-		printf("%c", o[--h]);
+		printf("%x", o[--h]);
 	}
 
 	return a;

@@ -6,20 +6,20 @@ William Parsons <[avolitty.com](https://avolitty.com/)>
 #### Description
 Create secure and variable-length checksums using C89 with a fast and unique hashing algorithm.
 
-- Allocates memory with stack instead of heap
-- Bitwise entropy derived without division or multiplication
-- C89 compilation option -std=c89 supported up to c2x
+- Allocates static memory with stack instead of heap
+- Bitwise entropy derived without division, multiplication or bitwise ^
 - Compiles with Clang or GCC
+- Compiles with forward-compatible C89 option -std=c89 and C++ option -stdc++98
 - Conforms to strict ISO C with -pedantic-errors enabled
-- Fast hashing speed with optimization level 3
+- Fast hashing speed without compiler optimization
 - Hashes sequential bytes with dependence on each previous byte value
 - Hashes strings consistently in variable-length blocks of memory
-- Large 2GB+ files are supported
+- Large files are supported
 - Length variant values can be adjusted in the same hashing function
 - Memory-safe with well-defined behavior
 - Minified code
-- Outputs an array of 0xF digits for fast hash table lookups
 - Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
+- Outputs an array of 0xF digits for fast hash table lookups
 
 #### Funding
 [Avolitty](https://avolitty.com/donate/)
@@ -47,55 +47,69 @@ The following example uses code from [test/main.c](https://github.com/avolitty/a
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 
-int main(int a, char *b[]) {
+int main(int a, char **b) {
 	FILE *c;
-	size_t d = 1024;
-	size_t e = 1;
-	size_t f = d;
+	size_t d;
+	size_t e;
+	size_t f;
 	unsigned short int g[16U];
-	unsigned short int h = 16U;
-	unsigned short int i = h;
-	unsigned short int j = 0U;
-	unsigned short int k = 0U;
-	unsigned short int *l = &i;
-	unsigned short int *m = &j;
+	unsigned short int h;
+	unsigned short int i;
+	unsigned short int j;
+	unsigned short int k;
+	unsigned short int *l;
+	unsigned short int *m;
 	unsigned char n[1024U];
 	unsigned char o[16U];
+	d = ((size_t) 1024);
+	e = ((size_t) 1);
+	f = d;
+	h = ((unsigned short int) 16U);
+	i = h;
+	j = ((unsigned short int) 0U);
+	k = ((unsigned short int) 0U);
+	l = &i;
+	m = &j;
 
-	if (a == 1) {
+	if (a == ((int) 1)) {
 		printf("Error hashing file without required file name argument.");
 		return a;
 	}
 
 	c = fopen((const char *) b[1], (const char *) "rb");
 
-	if (c == 0) {
+	if (c == ((int) 0)) {
 		printf("Error reading file \"%s\".", b[1]);
 		return a;
 	}
 
-	while (h != 0U) {
-		g[--h] = 254U;
+	while (h != j) {
+		h--;
+		g[h] = ((unsigned short int) 254U);
 	}
 
-	h = --i;
+	i--;
+	h = i;
 
 	while (d == f) {
 		f = fread(n, e, d, c);
-		k = (unsigned short int) f;
+		k = ((unsigned short int) f);
 		AvolittyHasherA(g, l, m, h, k, n);
 	}
 
-	if (feof(c) == 0) {
+	if (feof(c) == ((int) 0)) {
 		printf("Error hashing file \"%s\".", b[1]);
 		return a;
 	}
 
 	fclose(c);
-	AvolittyHasherB(g, ++h, i, o);
+	h++;
+	AvolittyHasherB(g, h, i, o);
+	i = ((unsigned short int) 0U);
 
-	while (h != 0U) {
-		printf("%x", o[--h]);
+	while (h != i) {
+		h--;
+		printf("%x", o[h]);
 	}
 
 	return a;
@@ -153,10 +167,10 @@ The default value is an empty array with a default length of `16U`. As mentioned
 An executable binary for testing can be compiled with either `clang` or `gcc`.
 
 ``` console
-gcc -O3 -o avolitty-hasher -std=c89 src/avolitty-hasher.c test/main.c
+gcc -o avolitty-hasher -pedantic-errors -std=c89 src/avolitty-hasher.c test/main.c
 ```
 
-`-O3` compiles with maximum optimization and `-std=c89` compiles with C89 standards.
+`-pedantic-errors` compiles with strict ISO C standards and `-std=c89` compiles with forward-compatible C89 standards.
 
 It outputs an executable binary file named `avolitty-hasher` in the current directory.
 
@@ -166,7 +180,7 @@ The output from executing `./avolitty-hasher` is a hexadecimal hash digest strin
 echo "123456789" > file
 
 ./avolitty-hasher file
-# f72e2e6635be5bb4
+# f72e2e66353a7efa
 ```
 
 The first command line argument value `file` is the file name to hash.
@@ -192,29 +206,29 @@ These are the outputs for each character length variant after modifying the leng
 
 # 16 characters
 ./avolitty-hasher file
-# f72e2e6635be5bb4
+# f72e2e66353a7efa
 
 # 32 characters
 ./avolitty-hasher file
-# cfc68e84a8b6dee56ef0585162c0272d
+# cfc68e84a832f9722bd17b25c3675340
 
 # 64 characters
 ./avolitty-hasher file
-# 2855a606efe398579a2d4d15245d87465d1a6626ed1e56d43bf58cfab992e203
+# 2855a606e7a549feb53edac6b955cdd3aba83e7e5c8a0ad3c2c395dfb1d0b552
 
 # 128 characters
 ./avolitty-hasher file
-# cf0a7277a0fc64fe31596891cb0652c292ef79bc47a5cdd331d5832f9ec0c59d5365600dadd870e2801ab8745b9422fab1ccc6c93f62e334d64eee66c7b2919f
+# cf0a72772c17f13c815122048dbe909da49ff5df1a67f13c891b9438e606deed2863f55d337d326f239841ac3ca68d9c3b743a6316c3064c5fbb436e0586fae7
 
 # 256 characters
 ./avolitty-hasher file
-# f36397add344262b77e7b788eec049fe315122802c1775956e8e5eabb9d1e0194b400f4a1229262b776356e909d164feb5b2bfc6b117f134c76356e9857887cabe27c8bf1a52faebca3fa1c69774f8a72e057456356427d028bd87b8c4f6b0f9f5bdba9eb18adee4fab3059b5cd41f5fe5994d939771e989819565410a1423f7
+# f36397a595fce01181d50f4a960e1cb0e2e733a373c0c519c763d20485fc6c344bc4681d6a6f3746f38618998db6deedacddc9386a677595ea2507802c177511bc641629a13968562fb3520ec6e262079a9fc83b6406725fbe52bb64b34a195537e59b0a318fb452424a533da5c9a625bbf8608ca9fbc8f97911b614c40bdbb1
 
 # 512 characters
 ./avolitty-hasher file
-# e240c0da9729aa0066cca66deec0413c899ffd914721e85716c4ec763dbe9019c76b9cf2dc177d5f5c51a66d62ad0ba79a25078024d9a24ebd7460537b827511053e5e27dc17f9f6fbc4e4bc47ad03610df8c1f258be1cb8a49ff5d75832751189135ea373442eed20bafd9147ad874e391356e1cb0e90956e869c7ef7a5413cd3e6d3b410ad2e685e3e76c14fde44465d9e9dfd95024be4cfed271adc0b826cb429b16e61a68d9faadd96db4a4ea1d6f896d3868b88614ec2f1d889c332cc5a80c027962680dd2bd4545cbe1ba4e42cc4b16cf1cbcb4f73277d7f34102653cd567c70a3072f14a0d2eab0b7084db6c8fe6da6e0a0bcc59ff7a4235749b8ecb3
+# e240c056b221e85fd036189985780b23b53edacef729aa08acddc9bc4fe398571e023be9019bdee566484553f7292623b53eda4258be1cb066c4ec7e7b06d6af54135e2f9e4ce019c7e7bf4a9ec88746fbccaeab3d32759da49ffd9147a549f67763dac6b1931c344b408be1c34c6cb8287c2ac635fc64721e02bfce73c80369c4382f53dd8675c60b4ee37e5cd789b2e8fe30b7551908b6c5e413f2318776345f85ca2a46107becbc6fc0a0e642575f3ac6f584e7716dbbae08aed82449dc24052de94a2a6d6cba267cf77afb709f5ccf665796af4e7dd29a103e4529a18f3d18a611ddb4b5b9361ae27a5b9217cc81c4bcbe4d90a5169eae0d03fa8fca185a
 
 # 1024 characters
 ./avolitty-hasher file
-# cf0ab6a89b827511053e5e27dc17f9f6fbc4e4bccb82f134438eda42dc17f9fe3151a6e909d16c34438e5eabb95d0369cf25832758be1cb0e26b1053f7ad8f0828f083a3f7ad03eda49f79bc47216c344bc4681dee4426a7926b1891c3442e69430afd91c3c887c29aa122802455cdd3b5b2b780a078874ebdf00f4a96065a08a497b70409d16cb0e2635eab3d3a3f84cf258b6d6a6f37cad8f8c17635788f0828f083a3f7ad03eda49f79bc47216c344bc4681dee4426a79263da42d4d9262b77ef71fa968ab3eda4135eab3570cd571e0a79bc4fe314feb53ed2886229262331d583a37b8a3f082874689147292eedac59e4bcc34ce09566ccae2f1aeb52ca3d6849ea58f25a83603c0cd57958ff45ea6e9dfd90f289361f7865eeb620bebdea6e90d9a44cb21190ecafa953dd26dcf242c0a824c573a6f082d23cdff5425ccfe228000564227bb572105ac5f2db0649165f257ed22cfda1f7fe35e3ed9a400eaba5276d117f76558f7552d9fb995d4c2932dc8d2656a91492a951ef33470a7bba10000a0813b0c0df851fb2f013b5d7cb0dd9a49edab4ad156d71fe59c22e39db76c9b37d077b39dbf55ac57e7ae3876e115199e450dad5d42b733a00d051293d00eee02e9cba267c7bd06f0d422e3ea0f0a0e67823c87531972a1a2493b83c649ab84b782b8261ebb497222f9de5f6de81eadc8a02e8d770a35d2c63383b
+# cf0a32c3219bd6a71e0233a373c049fe31512a4250fce0110df0078862292e69cfa9e43862a549721e86105b3dbe9011053694b485f4aa006e0afd152c931c3c0d7ca6e1c34ce85792eff55bb1177ddbfb400780245d0369c76b1815a0704134cf2583abb9d92e61053694b401931cb06e8e56652c939011815960df1aeb52ca54135e27583275110d7c2ac63dbe1cb8a41b1815a0f42ee5e26b9c763db65a8c05b2332f960e14729aa96891c34c64febdf083abb19bdeedacd50f4a9682f134cfa12aceff677595664083a3734c64feb5369cf2dc177d5fd874ecfa9ec887cad0361891cb06d6a79aa12ac6b9d1e0194b408b65a0fc6cb8a413d280a070cd5fc6aba8d16ebb85591419f74144725726ae89598081584d098986bcd287d9f3d77053335768389affce1492fe0f1f02111c5fd71ad1b86cb7c6d69dab92623078fe1f184edd549ea6f3799750e3e559c22e0065b703cb10c68f514505e313efad4f970e76c9031010eaed50143f14d4b26c8e290466c6e7e01d0e2cea58268dce1a18cdc7411267e856715cb3f71fde6387187c134de36b4943cf6373b6a4e11fa74a01bbe02e157d25507f0651b8ed6ea314137baff54d093b4e30b7dcd70267e068fba28ca187cca072c0f8b75d5914710282dc3755642f69ff370607246d3fd8b541f4a1b0d53f0f23ee19eaa8fc84574ad71217f06c62d8ec513d4b518079
 ```

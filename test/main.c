@@ -7,7 +7,7 @@ int main(int a, char **b) {
 	size_t d;
 	size_t e;
 	size_t f;
-	unsigned short int g[((unsigned short int) 256U)];
+	unsigned short int g[((unsigned short int) 16U)];
 	unsigned short int h;
 	unsigned short int i;
 	unsigned short int j;
@@ -15,11 +15,11 @@ int main(int a, char **b) {
 	unsigned short int *l;
 	unsigned short int *m;
 	unsigned char n[((unsigned short int) 1024U)];
-	unsigned char o[((unsigned short int) 256U)];
+	unsigned char o[((unsigned short int) 16U)];
 	d = ((size_t) 1024);
 	e = ((size_t) 1);
 	f = d;
-	h = ((unsigned short int) 256U);
+	h = ((unsigned short int) 16U);
 	i = h;
 	j = ((unsigned short int) 0U);
 	k = ((unsigned short int) 0U);

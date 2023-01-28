@@ -83,9 +83,11 @@ int main(int a, char **b) {
 		return a;
 	}
 
+	k = ((unsigned short int) 254U);
+
 	while (h != j) {
 		h--;
-		g[h] = ((unsigned short int) 254U);
+		g[h] = k;
 	}
 
 	i--;

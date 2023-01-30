@@ -43,7 +43,6 @@ cd avolitty-hasher
 The following example uses code from [test/main.c](https://github.com/avolitty/avolitty-hasher/blob/main/test/main.c) to generate hash digests with the `AvolittyHasherA()` and `AvolittyHasherB()` functions from [src/avolitty-hasher.c](https://github.com/avolitty/avolitty-hasher/blob/main/src/avolitty-hasher.c).
 
 ``` c
-#include <stddef.h>
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 
@@ -71,15 +70,15 @@ int main(int a, char **b) {
 	l = &i;
 	m = &j;
 
-	if (a == ((int) 1)) {
+	if (a == ((int) j)) {
 		printf("Error hashing file without required file name argument.");
 		return a;
 	}
 
-	c = fopen((const char *) b[1], (const char *) "rb");
+	c = fopen((const char *) b[e], (const char *) "rb");
 
-	if (c == ((int) 0)) {
-		printf("Error reading file \"%s\".", b[1]);
+	if (c == ((void *) 0)) {
+		printf("Error reading file \"%s\".", b[e]);
 		return a;
 	}
 

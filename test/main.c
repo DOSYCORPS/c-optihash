@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 
-int main(int a, char **b) {
-	FILE *c;
+int main(int a, char * * b) {
+	FILE * c;
 	size_t d;
 	size_t e;
 	size_t f;
@@ -11,8 +11,8 @@ int main(int a, char **b) {
 	unsigned short int i;
 	unsigned short int j;
 	unsigned short int k;
-	unsigned short int *l;
-	unsigned short int *m;
+	unsigned short int * l;
+	unsigned short int * m;
 	unsigned char n[((unsigned short int) 1024U)];
 	unsigned char o[((unsigned short int) 16U)];
 	d = ((size_t) 1024);

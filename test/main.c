@@ -1,4 +1,3 @@
-#include <stddef.h>
 #include <stdio.h>
 #include "../src/avolitty-hasher.h"
 
@@ -26,15 +25,15 @@ int main(int a, char **b) {
 	l = &i;
 	m = &j;
 
-	if (a == ((int) 1)) {
+	if (a == ((int) j)) {
 		printf("Error hashing file without required file name argument.");
 		return a;
 	}
 
-	c = fopen((const char *) b[1], (const char *) "rb");
+	c = fopen((const char *) b[e], (const char *) "rb");
 
-	if (c == ((int) 0)) {
-		printf("Error reading file \"%s\".", b[1]);
+	if (c == ((void *) 0)) {
+		printf("Error reading file \"%s\".", b[e]);
 		return a;
 	}
 

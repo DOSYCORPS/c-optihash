@@ -51,15 +51,15 @@ int main(int a, char * * b) {
 	size_t d;
 	size_t e;
 	size_t f;
-	unsigned short int g[16U];
+	unsigned short int g[((unsigned short int) 16U)];
 	unsigned short int h;
 	unsigned short int i;
 	unsigned short int j;
 	unsigned short int k;
 	unsigned short int * l;
 	unsigned short int * m;
-	unsigned char n[1024U];
-	unsigned char o[16U];
+	unsigned char n[((unsigned short int) 1024U)];
+	unsigned char o[((unsigned short int) 16U)];
 	d = ((size_t) 1024);
 	e = ((size_t) 1);
 	f = d;

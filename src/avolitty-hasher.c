@@ -14,7 +14,6 @@ void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsigned sh
 	k = ((unsigned short int) 2U);
 	l = ((unsigned short int) 1U);
 	m = ((unsigned short int) 0U);
-	n = ((unsigned short int) 0U);
 
 	while (e != m) {
 		g = (((((((unsigned short int) f[m]) + g) + ((g + k) >> l))) & i) + k);

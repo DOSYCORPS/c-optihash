@@ -9,7 +9,7 @@ Create secure and variable-length checksums using C89 with a fast and unique has
 - Allocates static memory with stack instead of heap
 - Bitwise entropy derived without division, multiplication or bitwise ^
 - Compiles with Clang or GCC
-- Compiles with forward-compatible C89 option -std=c89 and C++ option -stdc++98
+- Compiles with forward-compatible C89 and C++
 - Conforms to strict ISO C with -pedantic-errors enabled
 - Fast hashing speed without compiler optimization
 - Hashes sequential bytes with dependence on each previous byte value

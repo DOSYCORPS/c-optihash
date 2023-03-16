@@ -1,4 +1,4 @@
-extern void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsigned short int * c, unsigned short int d, unsigned short int e, unsigned char * f) {
+void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsigned short int * c, unsigned short int d, unsigned short int e, unsigned char * f) {
 	unsigned short int g;
 	unsigned short int h;
 	unsigned short int i;
@@ -28,7 +28,7 @@ extern void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsi
 	return;
 }
 
-extern void AvolittyHasherB(unsigned short int * a, unsigned short int b, unsigned short int c, unsigned char * d) {
+void AvolittyHasherB(unsigned short int * a, unsigned short int b, unsigned short int c, unsigned char * d) {
 	unsigned short int e;
 	unsigned short int f;
 	unsigned short int g;

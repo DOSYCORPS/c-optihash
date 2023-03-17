@@ -104,33 +104,33 @@ int main(int a, char * * b) {
 
 The first argument variable `g` is a pointer to a `unsigned short int` array to store the hashed payload bytes.
 
-The default value is an empty array with a default length of `16U`.
+The default value is an empty array with a default length of `16`.
 
 The length is equivalent to the output length and `AvolittyHasherA()` defines it as the bytes for the hash digest output before finalization.
 
 The second argument variable `k` is a pointer to modify the value of the variable `i`.
 
-The variable `i` is an `unsigned short int` defined as `h` with a default value of `16U`.
+The variable `i` is an `unsigned short int` defined as `h` with a default value of `16`.
 
 The third argument variable `l` is a pointer to modify the value of the variable `j`.
 
 The variable `j` is an `unsigned short int`.
 
-The value is `0U`.
+The value is `0`.
 
 The fourth argument variable `h` is an `unsigned short int` defined as the character length of the hash digest output.
 
-The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (`1U`, `2U`, `4U`, `8U`, `16U`, `32U`, `64U`, `128U`, `256U`, `512U`, `1024U`) with the same value as defined array lengths in variables `g` and `m`.
+The default value is `16` with a minimum of `1` and a maximum of `1024`. If the digest output character length needs to change, this value is in shifted increments (`1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1024`) with the same value as defined array lengths in variables `g` and `m`.
 
 The fifth argument variable `f` is the `size_t` result from each `fread()` iteration casted to `unsigned short int` before passing as an argument to `AvolittyHasherA()`.
 
 The sixth argument variable `m` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
 
-The default value is an empty array with a default length of `1024U`.
+The default value is an empty array with a default length of `1024`.
 
 The length be modified based on the expected length of file input and efficiency requirements. If the default length needs to change, it matches the number defined in the variable `d`.
 
-Changing the default length of `1024U` doesn't change digest output values. It only changes the maximum amount of memory to use for each chunk of data.
+Changing the default length of `1024` doesn't change digest output values. It only changes the maximum amount of memory to use for each chunk of data.
 
 The minimum length is the value of the variable `h`.
 
@@ -144,7 +144,7 @@ The third argument variable `i` is the previous value modified by the pointer `k
 
 The fourth argument variable `n` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
 
-The default value is an empty array with a default length of `16U`. As mentioned previously, this value matches the length of `g` and value of `h`.
+The default value is an empty array with a default length of `16`. As mentioned previously, this value matches the length of `g` and value of `h`.
 
 `AvolittyHasherB()` defines it as the finalized hash digest.
 

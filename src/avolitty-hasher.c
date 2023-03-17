@@ -1,26 +1,15 @@
 void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsigned short int * c, unsigned short int d, unsigned short int e, unsigned char * f) {
-	unsigned short int g;
-	unsigned short int h;
-	unsigned short int i;
+	unsigned short int g = *b;
+	unsigned short int h = *c;
+	unsigned short int i = 0;
 	unsigned short int j;
-	unsigned short int k;
-	unsigned short int l;
-	unsigned short int m;
-	unsigned short int n;
-	g = *b;
-	h = *c;
-	i = ((unsigned short int) 16383U);
-	j = ((unsigned short int) 1023U);
-	k = ((unsigned short int) 2U);
-	l = ((unsigned short int) 1U);
-	m = ((unsigned short int) 0U);
 
-	while (e != m) {
-		g = (((((((unsigned short int) f[m]) + g) + ((g + k) >> l))) & i) + k);
-		n = (h & d);
-		a[n] = ((a[n] + g) & j);
+	while (e != i) {
+		g = (((((f[i] + g) + ((g + 2) >> 1))) & 16383) + 2);
+		j = (h & d);
+		a[j] = ((a[j] + g) & 1023);
 		h++;
-		m++;
+		i++;
 	}
 
 	*b = g;
@@ -29,26 +18,15 @@ void AvolittyHasherA(unsigned short int * a, unsigned short int * b, unsigned sh
 }
 
 void AvolittyHasherB(unsigned short int * a, unsigned short int b, unsigned short int c, unsigned char * d) {
-	unsigned short int e;
-	unsigned short int f;
-	unsigned short int g;
-	unsigned short int h;
-	unsigned short int i;
-	unsigned short int j;
-	e = ((unsigned short int) 16383U);
-	f = ((unsigned short int) 15U);
-	g = ((unsigned short int) 2U);
-	h = ((unsigned short int) 1U);
-	i = ((unsigned short int) 0U);
-	j = ((unsigned short int) 0U);
+	unsigned short int e = 0;
 
-	while (b != j) {
+	while (b != 0) {
 		b--;
 		a[b] = c;
-		c = (((((a[b] + a[i]) + b) + ((b + c) >> h)) & e) + g);
-		a[i] = c;
-		d[b] = ((unsigned char) (c & f));
-		i++;
+		c = (((((a[b] + a[e]) + b) + ((b + c) >> 1)) & 16383) + 2);
+		a[e] = c;
+		d[b] = (c & 15);
+		e++;
 	}
 
 	return;

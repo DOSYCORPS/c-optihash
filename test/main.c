@@ -3,67 +3,53 @@
 
 int main(int a, char * * b) {
 	FILE * c;
-	size_t d;
-	size_t e;
-	size_t f;
-	unsigned short int g[((unsigned short int) 16U)];
-	unsigned short int h;
-	unsigned short int i;
-	unsigned short int j;
-	unsigned short int k;
-	unsigned short int * l;
-	unsigned short int * m;
-	unsigned char n[((unsigned short int) 1024U)];
-	unsigned char o[((unsigned short int) 16U)];
-	d = ((size_t) 1024);
-	e = ((size_t) 1);
-	f = d;
-	h = ((unsigned short int) 16U);
-	i = h;
-	j = ((unsigned short int) 0U);
-	k = ((unsigned short int) 0U);
-	l = &i;
-	m = &j;
+	size_t d = 1024;
+	size_t e = 1;
+	size_t f = d;
+	unsigned short int g[16];
+	unsigned short int h = 16;
+	unsigned short int i = h;
+	unsigned short int j = 0;
+	unsigned short int * k = &i;
+	unsigned short int * l = &j;
+	unsigned char m[1024];
+	unsigned char n[16];
 
-	if (a != ((int) j)) {
-		c = fopen((const char *) b[e], (const char *) "rb");
+	if (a != 0) {
+		c = fopen((const char *) b[1], (const char *) "rb");
 
 		if (c != ((void *) 0)) {
-			k = ((unsigned short int) 254U);
-
-			while (h != j) {
+			while (h != 0) {
 				h--;
-				g[h] = k;
+				g[h] = 254;
 			}
 
 			i--;
 			h = i;
 
 			while (d == f) {
-				f = fread(n, e, d, c);
-				k = ((unsigned short int) f);
-				AvolittyHasherA(g, l, m, h, k, n);
+				f = fread(m, e, d, c);
+				AvolittyHasherA(g, k, l, h, (unsigned short int) f, m);
 			}
 
-			if (feof(c) != ((int) 0)) {
+			if (feof(c) != 0) {
 				fclose(c);
 				h++;
-				AvolittyHasherB(g, h, i, o);
-				i = ((unsigned short int) 0U);
+				AvolittyHasherB(g, h, i, n);
 
-				while (h != i) {
+				while (h != 0) {
 					h--;
-					printf("%x", o[h]);
+					printf("%x", n[h]);
 				}
 			} else {
 				printf("Error hashing file \"%s\".", b[1]);
 			}
 		} else {
-			printf("Error reading file \"%s\".", b[e]);
+			printf("Error reading file \"%s\".", b[1]);
 		}
 	} else {
 		printf("Error hashing file without required file name argument.");
 	}
 
-	return a;
+	return 0;
 }

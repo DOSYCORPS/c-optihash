@@ -48,69 +48,55 @@ The following example uses code from [test/main.c](https://github.com/avolitty/a
 
 int main(int a, char * * b) {
 	FILE * c;
-	size_t d;
-	size_t e;
-	size_t f;
-	unsigned short int g[((unsigned short int) 16U)];
-	unsigned short int h;
-	unsigned short int i;
-	unsigned short int j;
-	unsigned short int k;
-	unsigned short int * l;
-	unsigned short int * m;
-	unsigned char n[((unsigned short int) 1024U)];
-	unsigned char o[((unsigned short int) 16U)];
-	d = ((size_t) 1024);
-	e = ((size_t) 1);
-	f = d;
-	h = ((unsigned short int) 16U);
-	i = h;
-	j = ((unsigned short int) 0U);
-	k = ((unsigned short int) 0U);
-	l = &i;
-	m = &j;
+	size_t d = 1024;
+	size_t e = 1;
+	size_t f = d;
+	unsigned short int g[16];
+	unsigned short int h = 16;
+	unsigned short int i = h;
+	unsigned short int j = 0;
+	unsigned short int * k = &i;
+	unsigned short int * l = &j;
+	unsigned char m[1024];
+	unsigned char n[16];
 
-	if (a != ((int) j)) {
-		c = fopen((const char *) b[e], (const char *) "rb");
+	if (a != 0) {
+		c = fopen((const char *) b[1], (const char *) "rb");
 
 		if (c != ((void *) 0)) {
-			k = ((unsigned short int) 254U);
-
-			while (h != j) {
+			while (h != 0) {
 				h--;
-				g[h] = k;
+				g[h] = 254;
 			}
 
 			i--;
 			h = i;
 
 			while (d == f) {
-				f = fread(n, e, d, c);
-				k = ((unsigned short int) f);
-				AvolittyHasherA(g, l, m, h, k, n);
+				f = fread(m, e, d, c);
+				AvolittyHasherA(g, k, l, h, (unsigned short int) f, m);
 			}
 
-			if (feof(c) != ((int) 0)) {
+			if (feof(c) != 0) {
 				fclose(c);
 				h++;
-				AvolittyHasherB(g, h, i, o);
-				i = ((unsigned short int) 0U);
+				AvolittyHasherB(g, h, i, n);
 
-				while (h != i) {
+				while (h != 0) {
 					h--;
-					printf("%x", o[h]);
+					printf("%x", n[h]);
 				}
 			} else {
 				printf("Error hashing file \"%s\".", b[1]);
 			}
 		} else {
-			printf("Error reading file \"%s\".", b[e]);
+			printf("Error reading file \"%s\".", b[1]);
 		}
 	} else {
 		printf("Error hashing file without required file name argument.");
 	}
 
-	return a;
+	return 0;
 }
 ```
 
@@ -126,7 +112,7 @@ The second argument variable `l` is a pointer to modify the value of the variabl
 
 The variable `i` is an `unsigned short int` defined as `h` with a default value of `16U`.
 
-The third argument variable `m` is a pointer to modify the value of the variable `j`.
+The third argument variable `l` is a pointer to modify the value of the variable `j`.
 
 The variable `j` is an `unsigned short int`.
 
@@ -134,11 +120,11 @@ The value is `0U`.
 
 The fourth argument variable `h` is an `unsigned short int` defined as the character length of the hash digest output.
 
-The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (`1U`, `2U`, `4U`, `8U`, `16U`, `32U`, `64U`, `128U`, `256U`, `512U`, `1024U`) with the same value as defined array lengths in variables `g` and `o`.
+The default value is `16U` with a minimum of `1U` and a maximum of `1024U`. If the digest output character length needs to change, this value is in shifted increments (`1U`, `2U`, `4U`, `8U`, `16U`, `32U`, `64U`, `128U`, `256U`, `512U`, `1024U`) with the same value as defined array lengths in variables `g` and `m`.
 
-The fifth argument variable `k` is an `unsigned short int` defined as the casted `size_t` result from each `fread()` iteration before passing as an argument to `AvolittyHasherA()`.
+The fifth argument variable `f` is the `size_t` result from each `fread()` iteration casted to `unsigned short int` before passing as an argument to `AvolittyHasherA()`.
 
-The sixth argument variable `n` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
+The sixth argument variable `m` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
 
 The default value is an empty array with a default length of `1024U`.
 
@@ -154,9 +140,9 @@ The first argument variable `g` is a pointer to the previous `unsigned short int
 
 The second argument variable `h` is the previous value defined as the output character length.
 
-The third argument variable `i` is the previous value modified by the pointer `l` in each hashing iteration for entropy.
+The third argument variable `i` is the previous value modified by the pointer `k` in each hashing iteration for entropy.
 
-The fourth argument variable `o` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
+The fourth argument variable `m` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
 
 The default value is an empty array with a default length of `16U`. As mentioned previously, this value matches the length of `g` and value of `h`.
 
@@ -183,7 +169,7 @@ echo "123456789" > file
 
 The first command line argument value `file` is the file name to hash.
 
-These are the outputs for each character length variant after modifying the lengths in the variables `g` and `o` and the value in the variable `h`.
+These are the outputs for each character length variant after modifying the lengths in the variables `g` and `m` and the value in the variable `h`.
 
 ``` console
 # 1 character

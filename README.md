@@ -108,7 +108,7 @@ The default value is an empty array with a default length of `16U`.
 
 The length is equivalent to the output length and `AvolittyHasherA()` defines it as the bytes for the hash digest output before finalization.
 
-The second argument variable `l` is a pointer to modify the value of the variable `i`.
+The second argument variable `k` is a pointer to modify the value of the variable `i`.
 
 The variable `i` is an `unsigned short int` defined as `h` with a default value of `16U`.
 
@@ -142,7 +142,7 @@ The second argument variable `h` is the previous value defined as the output cha
 
 The third argument variable `i` is the previous value modified by the pointer `k` in each hashing iteration for entropy.
 
-The fourth argument variable `m` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
+The fourth argument variable `n` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
 
 The default value is an empty array with a default length of `16U`. As mentioned previously, this value matches the length of `g` and value of `h`.
 

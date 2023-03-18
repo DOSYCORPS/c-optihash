@@ -6,12 +6,12 @@ int main(int a, char * * b) {
 	size_t d = 1024;
 	size_t e = 1;
 	size_t f = d;
-	unsigned short int g[16];
-	unsigned short int h = 16;
-	unsigned short int i = h;
-	unsigned short int j = 0;
-	unsigned short int * k = &i;
-	unsigned short int * l = &j;
+	unsigned short g[16];
+	unsigned short h = 16;
+	unsigned short i = h;
+	unsigned short j = 0;
+	unsigned short * k = &i;
+	unsigned short * l = &j;
 	unsigned char m[1024];
 	unsigned char n[16];
 
@@ -29,7 +29,7 @@ int main(int a, char * * b) {
 
 			while (d == f) {
 				f = fread(m, e, d, c);
-				AvolittyHasherA(g, k, l, h, (unsigned short int) f, m);
+				AvolittyHasherA(g, k, l, h, (unsigned short) f, m);
 			}
 
 			if (feof(c) != 0) {

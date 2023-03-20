@@ -160,7 +160,7 @@ The output from executing `./avolitty-hasher` is a hexadecimal hash digest strin
 ``` console
 echo "123456789" > file
 
-./avolitty-hasher "file"
+./avolitty-hasher file
 # f72e2e66353a7efa
 ```
 

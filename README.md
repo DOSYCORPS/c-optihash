@@ -51,7 +51,7 @@ int main(int a, char * * b) {
 	if (a != 0) {
 		c = fopen(b[1], "rb");
 
-		if (c != ((void *) 0)) {
+		if (c != (void *) 0) {
 			while (f != 0) {
 				f--;
 				d[f] = 254;

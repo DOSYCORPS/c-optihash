@@ -158,7 +158,7 @@ It outputs an executable binary file named `avolitty-hasher` in the current dire
 The output from executing `./avolitty-hasher` is a hexadecimal hash digest string.
 
 ``` console
-echo "123456789" > file
+echo 123456789 > file
 
 ./avolitty-hasher file
 # f72e2e66353a7efa

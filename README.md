@@ -117,19 +117,21 @@ The length is equivalent to the output length defined as as the bytes for the ha
 
 The second argument variable `i` is a pointer to modify the value of the variable `g`.
 
-The variable `g` is an `unsigned short` defined as `h`.
+The variable `g` is an `unsigned short` defined as `f`.
 
 The third argument variable `j` is a pointer to modify the value of the variable `h`.
 
 The variable `h` is an `unsigned short` defined as `0`.
 
-The fourth argument variable `e` is the integer result from each `fread()` iteration.
+The fourth argument variable `e` is the integer result from each `fread()` iteration defined as `1024`.
+
+The length should be modified based on the expected length of file input and efficiency requirements.
 
 The fifth argument variable `k` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
 
 The default value is an empty array for file data chunks with a default length of `1024`.
 
-The length be modified based on the expected length of file input and efficiency requirements. If the default length needs to change, it should match the memory buffer size for storing chunked file data results.
+The length should be modified based on efficiency requirements and should match the length of the variable `e` and other instances where `1024` is referenced as the memory buffer size for each chunked file data result.
 
 The minimum length is the value of the variable `h`.
 
@@ -143,7 +145,9 @@ The third argument variable `g` is the previous value modified by the pointer `i
 
 The fourth argument variable `l` is a pointer to an `unsigned char` array to store the hashed bytes after finalization.
 
-The default value is an empty array with a default length of `16`. This length should match the length of the variable `d` and the value of the variable `f`.
+The default value is an empty array with a default length of `16`.
+
+The length should match the length of the variable `d` and the value of the variable `f`.
 
 ``` console
 gcc -o avolitty-hasher -pedantic-errors -std=c89 src/avolitty-hasher.c test/main.c

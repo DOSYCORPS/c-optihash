@@ -1,14 +1,10 @@
 ## Avolitty Hasher
 
-#### Author
-William Parsons <[avolitty.com](https://avolitty.com/)>
-
 #### Description
 Create secure and variable-length checksums using C89 with a fast and unique hashing algorithm.
 
 - Allocates static memory with stack instead of heap
 - Bitwise entropy derived without division, multiplication or bitwise ^
-- Compiles with Clang or GCC
 - Compiles with forward-compatible C89 and C++
 - Conforms to strict ISO C with -pedantic-errors enabled
 - Fast hashing speed without compiler optimization
@@ -16,16 +12,10 @@ Create secure and variable-length checksums using C89 with a fast and unique has
 - Hashes strings consistently in variable-length blocks of memory
 - Large files are supported
 - Length variant values can be adjusted in the same hashing function
-- Memory-safe with well-defined behavior
-- Minified code
+- Memory-safe with defined behavior
+- Minified and readable code with single-letter variable names
 - Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
 - Outputs an array of 0xF digits for fast hash table lookups
-
-#### Funding
-[Avolitty](https://avolitty.com/donate/)
-
-#### License
-[MIT](https://github.com/avolitty/avolitty-hasher/blob/main/LICENSE)
 
 #### Usage
 Clone the repository in the current directory with `git`.
@@ -40,7 +30,7 @@ Navigate to the cloned repository's root directory with `cd`.
 cd avolitty-hasher
 ```
 
-The following example uses code from [test/main.c](https://github.com/avolitty/avolitty-hasher/blob/main/test/main.c) to generate hash digests with the `AvolittyHasherA()` and `AvolittyHasherB()` functions from [src/avolitty-hasher.c](https://github.com/avolitty/avolitty-hasher/blob/main/src/avolitty-hasher.c).
+The following example uses code from [test/main.c](https://github.com/avolitty/avolitty-hasher/blob/main/test/main.c) to generate hash digests.
 
 ``` c
 #include <stdio.h>
@@ -48,43 +38,40 @@ The following example uses code from [test/main.c](https://github.com/avolitty/a
 
 int main(int a, char * * b) {
 	FILE * c;
-	size_t d = 1024;
-	size_t e = 1;
-	size_t f = d;
-	unsigned short int g[16];
-	unsigned short int h = 16;
-	unsigned short int i = h;
-	unsigned short int j = 0;
-	unsigned short int * k = &i;
-	unsigned short int * l = &j;
-	unsigned char m[1024];
-	unsigned char n[16];
+	unsigned short d[16];
+	unsigned short e = 1024;
+	unsigned short f = 16;
+	unsigned short g = f;
+	unsigned short h = 0;
+	unsigned short * i = &g;
+	unsigned short * j = &h;
+	unsigned char k[1024];
+	unsigned char l[16];
 
 	if (a != 0) {
-		c = fopen((const char *) b[1], (const char *) "rb");
+		c = fopen(b[1], "rb");
 
 		if (c != ((void *) 0)) {
-			while (h != 0) {
-				h--;
-				g[h] = 254;
+			while (f != 0) {
+				f--;
+				d[f] = 254;
 			}
 
-			i--;
-			h = i;
+			f = g;
+			g--;
 
-			while (d == f) {
-				f = fread(m, e, d, c);
-				AvolittyHasherA(g, k, l, h, (unsigned short int) f, m);
+			while (e == 1024) {
+				e = fread(k, 1, 1024, c);
+				AvolittyHasherE(d, i, j, e, k);
 			}
 
 			if (feof(c) != 0) {
 				fclose(c);
-				h++;
-				AvolittyHasherB(g, h, i, n);
+				AvolittyHasherL(d, f, g, l);
 
-				while (h != 0) {
-					h--;
-					printf("%x", n[h]);
+				while (f != 0) {
+					f--;
+					printf("%x", l[f]);
 				}
 			} else {
 				printf("Error hashing file \"%s\".", b[1]);
@@ -100,61 +87,67 @@ int main(int a, char * * b) {
 }
 ```
 
-`AvolittyHasherA()` hashes message payload bytes.
+`AvolittyPathfinderA()` outputs a 1-character digest.
 
-The first argument variable `g` is a pointer to a `unsigned short int` array to store the hashed payload bytes.
+`AvolittyPathfinderB()` outputs a 2-character digest.
+
+`AvolittyPathfinderC()` outputs a 4-character digest.
+
+`AvolittyPathfinderD()` outputs a 8-character digest.
+
+`AvolittyPathfinderE()` outputs a 16-character digest.
+
+`AvolittyPathfinderF()` outputs a 32-character digest.
+
+`AvolittyPathfinderG()` outputs a 64-character digest.
+
+`AvolittyPathfinderH()` outputs a 128-character digest.
+
+`AvolittyPathfinderI()` outputs a 256-character digest.
+
+`AvolittyPathfinderJ()` outputs a 512-character digest.
+
+`AvolittyPathfinderK()` outputs a 1024-character digest.
+
+The first argument variable `d` is a pointer to an `unsigned short` array to store the hashed payload bytes.
 
 The default value is an empty array with a default length of `16`.
 
-The length is equivalent to the output length and `AvolittyHasherA()` defines it as the bytes for the hash digest output before finalization.
+The length is equivalent to the output length defined as as the bytes for the hash digest output before finalization.
 
-The second argument variable `k` is a pointer to modify the value of the variable `i`.
+The second argument variable `i` is a pointer to modify the value of the variable `g`.
 
-The variable `i` is an `unsigned short int` defined as `h` with a default value of `16`.
+The variable `g` is an `unsigned short` defined as `h`.
 
-The third argument variable `l` is a pointer to modify the value of the variable `j`.
+The third argument variable `j` is a pointer to modify the value of the variable `h`.
 
-The variable `j` is an `unsigned short int`.
+The variable `h` is an `unsigned short` defined as `0`.
 
-The value is `0`.
+The fourth argument variable `e` is the integer result from each `fread()` iteration.
 
-The fourth argument variable `h` is an `unsigned short int` defined as the character length of the hash digest output.
+The fifth argument variable `k` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
 
-The default value is `16` with a minimum of `1` and a maximum of `1024`. If the digest output character length needs to change, this value is in shifted increments (`1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1024`) with the same value as defined array lengths in variables `g` and `m`.
+The default value is an empty array for file data chunks with a default length of `1024`.
 
-The fifth argument variable `f` is the `size_t` result from each `fread()` iteration casted to `unsigned short int` before passing as an argument to `AvolittyHasherA()`.
-
-The sixth argument variable `m` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
-
-The default value is an empty array with a default length of `1024`.
-
-The length be modified based on the expected length of file input and efficiency requirements. If the default length needs to change, it matches the number defined in the variable `d`.
-
-Changing the default length of `1024` doesn't change digest output values. It only changes the maximum amount of memory to use for each chunk of data.
+The length be modified based on the expected length of file input and efficiency requirements. If the default length needs to change, it should match the memory buffer size for storing chunked file data results.
 
 The minimum length is the value of the variable `h`.
 
-`AvolittyHasherB()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
+`AvolittyHasherL()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
 
-The first argument variable `g` is a pointer to the previous `unsigned short int` array defined as the hashed payload bytes to finalize.
+The first argument variable `d` is a pointer to the previous `unsigned short` array defined as the hashed payload bytes to finalize.
 
-The second argument variable `h` is the previous value defined as the output character length.
+The second argument variable `f` is the previous value defined as the output character length.
 
-The third argument variable `i` is the previous value modified by the pointer `k` in each hashing iteration for entropy.
+The third argument variable `g` is the previous value modified by the pointer `i` in each hashing iteration for entropy.
 
-The fourth argument variable `n` is a pointer to an `unsigned char` array to store the hashed bytes after finalization from `AvolittyHasherB()`.
+The fourth argument variable `l` is a pointer to an `unsigned char` array to store the hashed bytes after finalization.
 
-The default value is an empty array with a default length of `16`. As mentioned previously, this value matches the length of `g` and value of `h`.
-
-`AvolittyHasherB()` defines it as the finalized hash digest.
-
-An executable binary for testing can be compiled with either `clang` or `gcc`.
+The default value is an empty array with a default length of `16`. This length should match the length of the variable `d` and the value of the variable `f`.
 
 ``` console
 gcc -o avolitty-hasher -pedantic-errors -std=c89 src/avolitty-hasher.c test/main.c
 ```
-
-`-pedantic-errors` compiles with strict ISO C standards and `-std=c89` compiles with forward-compatible C89 standards.
 
 It outputs an executable binary file named `avolitty-hasher` in the current directory.
 
@@ -163,56 +156,56 @@ The output from executing `./avolitty-hasher` is a hexadecimal hash digest strin
 ``` console
 echo "123456789" > file
 
-./avolitty-hasher file
+./avolitty-hasher "file"
 # f72e2e66353a7efa
 ```
 
 The first command line argument value `file` is the file name to hash.
 
-These are the outputs for each character length variant after modifying the lengths in the variables `g` and `m` and the value in the variable `h`.
+These are the outputs for each character length variant.
 
 ``` console
-# 1 character
+# AvolittyPathfinderA()
 ./avolitty-hasher file
 # e
 
-# 2 characters
+# AvolittyPathfinderB()
 ./avolitty-hasher file
 # b8
 
-# 4 characters
+# AvolittyPathfinderC()
 ./avolitty-hasher file
 # acf8
 
-# 8 characters
+# AvolittyPathfinderD()
 ./avolitty-hasher file
 # 5dc02d43
 
-# 16 characters
+# AvolittyPathfinderE()
 ./avolitty-hasher file
 # f72e2e66353a7efa
 
-# 32 characters
+# AvolittyPathfinderF()
 ./avolitty-hasher file
 # cfc68e84a832f9722bd17b25c3675340
 
-# 64 characters
+# AvolittyPathfinderG()
 ./avolitty-hasher file
 # 2855a606e7a549feb53edac6b955cdd3aba83e7e5c8a0ad3c2c395dfb1d0b552
 
-# 128 characters
+# AvolittyPathfinderH()
 ./avolitty-hasher file
 # cf0a72772c17f13c815122048dbe909da49ff5df1a67f13c891b9438e606deed2863f55d337d326f239841ac3ca68d9c3b743a6316c3064c5fbb436e0586fae7
 
-# 256 characters
+# AvolittyPathfinderI()
 ./avolitty-hasher file
 # f36397a595fce01181d50f4a960e1cb0e2e733a373c0c519c763d20485fc6c344bc4681d6a6f3746f38618998db6deedacddc9386a677595ea2507802c177511bc641629a13968562fb3520ec6e262079a9fc83b6406725fbe52bb64b34a195537e59b0a318fb452424a533da5c9a625bbf8608ca9fbc8f97911b614c40bdbb1
 
-# 512 characters
+# AvolittyPathfinderJ()
 ./avolitty-hasher file
 # e240c056b221e85fd036189985780b23b53edacef729aa08acddc9bc4fe398571e023be9019bdee566484553f7292623b53eda4258be1cb066c4ec7e7b06d6af54135e2f9e4ce019c7e7bf4a9ec88746fbccaeab3d32759da49ffd9147a549f67763dac6b1931c344b408be1c34c6cb8287c2ac635fc64721e02bfce73c80369c4382f53dd8675c60b4ee37e5cd789b2e8fe30b7551908b6c5e413f2318776345f85ca2a46107becbc6fc0a0e642575f3ac6f584e7716dbbae08aed82449dc24052de94a2a6d6cba267cf77afb709f5ccf665796af4e7dd29a103e4529a18f3d18a611ddb4b5b9361ae27a5b9217cc81c4bcbe4d90a5169eae0d03fa8fca185a
 
-# 1024 characters
+# AvolittyPathfinderK()
 ./avolitty-hasher file
 # cf0a32c3219bd6a71e0233a373c049fe31512a4250fce0110df0078862292e69cfa9e43862a549721e86105b3dbe9011053694b485f4aa006e0afd152c931c3c0d7ca6e1c34ce85792eff55bb1177ddbfb400780245d0369c76b1815a0704134cf2583abb9d92e61053694b401931cb06e8e56652c939011815960df1aeb52ca54135e27583275110d7c2ac63dbe1cb8a41b1815a0f42ee5e26b9c763db65a8c05b2332f960e14729aa96891c34c64febdf083abb19bdeedacd50f4a9682f134cfa12aceff677595664083a3734c64feb5369cf2dc177d5fd874ecfa9ec887cad0361891cb06d6a79aa12ac6b9d1e0194b408b65a0fc6cb8a413d280a070cd5fc6aba8d16ebb85591419f74144725726ae89598081584d098986bcd287d9f3d77053335768389affce1492fe0f1f02111c5fd71ad1b86cb7c6d69dab92623078fe1f184edd549ea6f3799750e3e559c22e0065b703cb10c68f514505e313efad4f970e76c9031010eaed50143f14d4b26c8e290466c6e7e01d0e2cea58268dce1a18cdc7411267e856715cb3f71fde6387187c134de36b4943cf6373b6a4e11fa74a01bbe02e157d25507f0651b8ed6ea314137baff54d093b4e30b7dcd70267e068fba28ca187cca072c0f8b75d5914710282dc3755642f69ff370607246d3fd8b541f4a1b0d53f0f23ee19eaa8fc84574ad71217f06c62d8ec513d4b518079
 ```

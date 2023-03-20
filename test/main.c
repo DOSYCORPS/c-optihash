@@ -3,43 +3,40 @@
 
 int main(int a, char * * b) {
 	FILE * c;
-	size_t d = 1024;
-	size_t e = 1;
-	size_t f = d;
-	unsigned short g[16];
-	unsigned short h = 16;
-	unsigned short i = h;
-	unsigned short j = 0;
-	unsigned short * k = &i;
-	unsigned short * l = &j;
-	unsigned char m[1024];
-	unsigned char n[16];
+	unsigned short d[16];
+	unsigned short e = 1024;
+	unsigned short f = 16;
+	unsigned short g = f;
+	unsigned short h = 0;
+	unsigned short * i = &g;
+	unsigned short * j = &h;
+	unsigned char k[1024];
+	unsigned char l[16];
 
 	if (a != 0) {
-		c = fopen((const char *) b[1], (const char *) "rb");
+		c = fopen(b[1], "rb");
 
 		if (c != ((void *) 0)) {
-			while (h != 0) {
-				h--;
-				g[h] = 254;
+			while (f != 0) {
+				f--;
+				d[f] = 254;
 			}
 
-			i--;
-			h = i;
+			f = g;
+			g--;
 
-			while (d == f) {
-				f = fread(m, e, d, c);
-				AvolittyHasherA(g, k, l, h, (unsigned short) f, m);
+			while (e == 1024) {
+				e = fread(k, 1, 1024, c);
+				AvolittyHasherI(d, i, j, e, k);
 			}
 
 			if (feof(c) != 0) {
 				fclose(c);
-				h++;
-				AvolittyHasherB(g, h, i, n);
+				AvolittyHasherL(d, f, g, l);
 
-				while (h != 0) {
-					h--;
-					printf("%x", n[h]);
+				while (f != 0) {
+					f--;
+					printf("%x", l[f]);
 				}
 			} else {
 				printf("Error hashing file \"%s\".", b[1]);

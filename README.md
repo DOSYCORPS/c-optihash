@@ -153,8 +153,6 @@ The length should match the length of the variable `d` and the value of the vari
 gcc -o c-avolitty-hasher -pedantic-errors -std=c89 src/avolitty-hasher.c test/main.c
 ```
 
-It outputs an executable binary file named `c-avolitty-hasher` in the current directory.
-
 The output from executing `./c-avolitty-hasher` is a hexadecimal hash digest string.
 
 ``` console

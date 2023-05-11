@@ -1,36 +1,44 @@
 ## C Avolitty Hasher
 
+#### Author
+Avolitty - [https://avolitty.com](https://avolitty.com)
+
 #### Description
 Create secure and variable-length checksums using C with a fast and unique hashing algorithm.
 
 - Allocates static memory with stack instead of heap
-- Bitwise entropy derived without division, multiplication or bitwise ^
+- Bitwise entropy derived without XOR, division or multiplication
 - Compiles with forward-compatible C89 and C++
 - Conforms to strict ISO C with -pedantic-errors enabled
-- Fast hashing speed without compiler optimization
+- Efficient without multithreading or processor-specific vectorization
+- Fast hashing speed without relying on compiler optimization
 - Hashes sequential bytes with dependence on each previous byte value
 - Hashes strings consistently in variable-length blocks of memory
-- Large files are supported
-- Length variant values can be adjusted in the same hashing function
+- Input with large files supported
 - Memory-safe with defined behavior
 - Minified and readable code with single-letter variable names
 - Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
 - Outputs an array of 0xF digits for fast hash table lookups
+- Separate hashing functions for each digest length variant
+
+#### License Tiers
+- Free Tier - $0 for evaluation and testing before subscribing to Paid Tier
+- Paid Tier - [$10 monthly subscription](https://avolitty.com/subscribe/) for business and personal usage
 
 #### Usage
-Clone the repository in the current directory with `git`.
+Clone the repository in the current directory with the command `git`.
 
 ``` console
 git clone https://github.com/avolitty/c-avolitty-hasher.git
 ```
 
-Navigate to the cloned repository's root directory with `cd`.
+Navigate to the cloned repository's root directory with the command `cd`.
 
 ``` console
 cd c-avolitty-hasher
 ```
 
-The following example uses code from [test/main.c](https://github.com/avolitty/c-avolitty-hasher/blob/main/test/main.c) to generate hash digests.
+The following example uses code from the file [test/main.c](https://github.com/avolitty/c-avolitty-hasher/blob/main/test/main.c) to generate hash digests.
 
 ``` c
 #include <stdio.h>
@@ -87,27 +95,27 @@ int main(int a, char * * b) {
 }
 ```
 
-`AvolittyHasherA()` outputs a 1-character digest.
+The function `AvolittyHasherA()` outputs a 1-character digest.
 
-`AvolittyHasherB()` outputs a 2-character digest.
+The function `AvolittyHasherB()` outputs a 2-character digest.
 
-`AvolittyHasherC()` outputs a 4-character digest.
+The function `AvolittyHasherC()` outputs a 4-character digest.
 
-`AvolittyHasherD()` outputs a 8-character digest.
+The function `AvolittyHasherD()` outputs a 8-character digest.
 
-`AvolittyHasherE()` outputs a 16-character digest.
+The function `AvolittyHasherE()` outputs a 16-character digest.
 
-`AvolittyHasherF()` outputs a 32-character digest.
+The function `AvolittyHasherF()` outputs a 32-character digest.
 
-`AvolittyHasherG()` outputs a 64-character digest.
+The function `AvolittyHasherG()` outputs a 64-character digest.
 
-`AvolittyHasherH()` outputs a 128-character digest.
+The function `AvolittyHasherH()` outputs a 128-character digest.
 
-`AvolittyHasherI()` outputs a 256-character digest.
+The function `AvolittyHasherI()` outputs a 256-character digest.
 
-`AvolittyHasherJ()` outputs a 512-character digest.
+The function `AvolittyHasherJ()` outputs a 512-character digest.
 
-`AvolittyHasherK()` outputs a 1024-character digest.
+The function `AvolittyHasherK()` outputs a 1024-character digest.
 
 The first argument variable `d` is a pointer to an `unsigned short` array to store the hashed payload bytes.
 
@@ -117,7 +125,7 @@ The length is equivalent to the output length defined as as the bytes for the ha
 
 The second argument variable `i` is a pointer to modify the value of the variable `g`.
 
-The variable `g` is an `unsigned short` defined as `f`.
+The variable `g` is an `unsigned short` defined as the variable `f`.
 
 The third argument variable `j` is a pointer to modify the value of the variable `h`.
 
@@ -135,13 +143,13 @@ The length should be modified based on efficiency requirements and should match 
 
 The minimum length is the value of the variable `h`.
 
-`AvolittyHasherL()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
+The function `AvolittyHasherL()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
 
 The first argument variable `d` is a pointer to the previous `unsigned short` array defined as the hashed payload bytes to finalize.
 
 The second argument variable `f` is the previous value defined as the output character length.
 
-The third argument variable `g` is the previous value modified by the pointer `i` in each hashing iteration for entropy.
+The third argument variable `g` is the previous value modified by the variable `i` in each hashing iteration for entropy.
 
 The fourth argument variable `l` is a pointer to an `unsigned char` array to store the hashed bytes after finalization.
 

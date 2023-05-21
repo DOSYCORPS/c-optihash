@@ -23,7 +23,7 @@ Create secure and variable-length checksums using C with a fast and unique hashi
 
 #### License Tiers
 - Free Tier - $0 for evaluation and testing before subscribing to Paid Tier
-- Paid Tier - [$10 monthly subscription](https://avolitty.com/subscribe/) for business and personal usage
+- Paid Tier - [$1 monthly subscription](https://avolitty.com/subscribe/) for business and personal usage
 
 #### Usage
 Clone the repository in the current directory with the command `git`.

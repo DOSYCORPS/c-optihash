@@ -1,8 +1,5 @@
 ## C Avolitty Hasher
 
-#### Author
-Avolitty - [https://avolitty.com](https://avolitty.com)
-
 #### Description
 Create secure and variable-length checksums using C with a fast and unique hashing algorithm.
 
@@ -20,10 +17,6 @@ Create secure and variable-length checksums using C with a fast and unique hashi
 - Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
 - Outputs an array of 0xF digits for fast hash table lookups
 - Separate hashing functions for each digest length variant
-
-#### License Tiers
-- Free Tier - $0 for evaluation and testing before subscribing to Paid Tier
-- Paid Tier - [$1 monthly subscription](https://avolitty.com/subscribe/) for business and personal usage
 
 #### Usage
 Clone the repository in the current directory with the command `git`.

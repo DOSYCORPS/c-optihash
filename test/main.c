@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../src/avolitty-hasher.h"
+#include "../src/hasher.h"
 
 int main(int a, char * * b) {
 	FILE * c;
@@ -27,12 +27,12 @@ int main(int a, char * * b) {
 
 			while (e == 1024) {
 				e = fread(k, 1, 1024, c);
-				AvolittyHasherI(d, i, j, e, k);
+				hasherI(d, i, j, e, k);
 			}
 
 			if (feof(c) != 0) {
 				fclose(c);
-				AvolittyHasherL(d, f, g, l);
+				hasherL(d, f, g, l);
 
 				while (f != 0) {
 					f--;

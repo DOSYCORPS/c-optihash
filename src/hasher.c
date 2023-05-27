@@ -1,4 +1,4 @@
-void AvolittyHasherA(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherA(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -15,7 +15,7 @@ void AvolittyHasherA(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherB(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherB(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -34,7 +34,7 @@ void AvolittyHasherB(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherC(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherC(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -53,7 +53,7 @@ void AvolittyHasherC(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherD(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherD(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -72,7 +72,7 @@ void AvolittyHasherD(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherE(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherE(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -91,7 +91,7 @@ void AvolittyHasherE(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherF(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherF(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -110,7 +110,7 @@ void AvolittyHasherF(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherG(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherG(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -129,7 +129,7 @@ void AvolittyHasherG(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherH(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherH(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -148,7 +148,7 @@ void AvolittyHasherH(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherI(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherI(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -167,7 +167,7 @@ void AvolittyHasherI(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherJ(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherJ(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -186,7 +186,7 @@ void AvolittyHasherJ(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherK(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
+void hasherK(unsigned short * a, unsigned short * b, unsigned short * c, unsigned short d, unsigned char * e) {
 	unsigned short f = *b;
 	unsigned short g = *c;
 	unsigned short h = 0;
@@ -205,7 +205,7 @@ void AvolittyHasherK(unsigned short * a, unsigned short * b, unsigned short * c,
 	return;
 }
 
-void AvolittyHasherL(unsigned short * a, unsigned short b, unsigned short c, unsigned char * d) {
+void hasherL(unsigned short * a, unsigned short b, unsigned short c, unsigned char * d) {
 	unsigned short e = 0;
 
 	while (b != 0) {

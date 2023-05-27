@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../src/hasher.h"
+#include "hasher.h"
 
 int main(int a, char * * b) {
 	FILE * c;

@@ -31,11 +31,11 @@ Navigate to the cloned repository's root directory with the command `cd`.
 cd c-hasher
 ```
 
-The following example uses code from the file [test/main.c](https://github.com/frymimori/c-hasher/blob/main/test/main.c) to generate hash digests.
+The following example uses code from the file [test.c](https://github.com/frymimori/c-hasher/blob/main/test.c) to generate hash digests.
 
 ``` c
 #include <stdio.h>
-#include "../src/hasher.h"
+#include "hasher.h"
 
 int main(int a, char * * b) {
 	FILE * c;
@@ -151,7 +151,7 @@ The default value is an empty array with a default length of `16`.
 The length should match the length of the variable `d` and the value of the variable `f`.
 
 ``` console
-gcc -o c-hasher -pedantic-errors -std=c89 src/hasher.c test/main.c
+gcc -o c-hasher -pedantic-errors -std=c89 hasher.c test.c
 ```
 
 The output from the command `./c-hasher` is a hexadecimal hash digest string.

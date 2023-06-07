@@ -3,20 +3,20 @@
 #### Description
 Create secure and variable-length checksums using C with a fast and unique hashing algorithm.
 
-- Allocates static memory with stack instead of heap
-- Bitwise entropy derived without XOR, division or multiplication
-- Compiles with forward-compatible C89 and C++
-- Conforms to strict ISO C with -pedantic-errors enabled
+- Allocates memory without dynamic memory allocation functions
+- Compiles with forward-compatible `C89`
+- Conforms to strict ISO C with `-pedantic-errors` enabled
 - Efficient without multithreading or processor-specific vectorization
 - Fast hashing speed without relying on compiler optimization
 - Hashes sequential bytes with dependence on each previous byte value
-- Hashes strings consistently in variable-length blocks of memory
+- Hashes large strings in segments with variable-length blocks of memory
 - Input with large files supported
 - Memory-safe with defined behavior
 - Minified and readable code with single-letter variable names
-- Output character length can be 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 or 1024
-- Outputs an array of 0xF digits for fast hash table lookups
-- Separate hashing functions for each digest length variant
+- Only addition, bitwise AND and bitwise shift calculations used in simple expressions
+- Output character length can be `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512` or `1024`
+- Outputs an array of `unsigned char` integers between `0` and `15`
+- Suitable for all hashing purposes based on the digest length of each hasher variant
 
 #### Usage
 Clone the repository in the current directory with the command `git`.

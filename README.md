@@ -33,10 +33,10 @@ Navigate to the cloned repository's root directory with the command `cd`.
 cd c-optihash
 ```
 
-The following example uses code from the file [test.c](https://github.com/frymimori/c-optihash/blob/main/test.c) to generate hash digests.
+The following example uses the file [test.c](https://github.com/frymimori/c-optihash/blob/main/test.c) to generate hash digests with maximum compiler optimization enabled.
 
 ``` console
-gcc -o c-optihash -pedantic-errors -std=c89 optihash.c test.c
+gcc -O3 -o c-optihash -pedantic-errors -std=c89 optihash.c test.c
 ```
 
 The output from the command `./c-optihash` is a hexadecimal hash digest string.

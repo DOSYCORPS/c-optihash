@@ -24,7 +24,7 @@ OptiHash is a fast hashing algorithm to create secure and variable-sized checksu
 Clone the repository in the current directory with the command `git`.
 
 ``` console
-git clone https://github.com/frymimori/c-optihash.git
+git clone https://github.com/optifry/c-optihash.git
 ```
 
 Navigate to the cloned repository's root directory with the command `cd`.
@@ -33,7 +33,7 @@ Navigate to the cloned repository's root directory with the command `cd`.
 cd c-optihash
 ```
 
-The following example uses the file [test.c](https://github.com/frymimori/c-optihash/blob/main/test.c) to generate hash digests with maximum compiler optimization enabled.
+The following example uses the file [test.c](https://github.com/optifry/c-optihash/blob/main/test.c) to generate hash digests with maximum compiler optimization enabled.
 
 ``` console
 gcc -O3 -o c-optihash -pedantic-errors -std=c89 optihash.c test.c

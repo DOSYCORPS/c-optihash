@@ -1,214 +1,99 @@
-## C Hasher
+## C OptiHash
 
 #### Description
-Create secure and variable-length checksums using C with a fast and unique hashing algorithm.
+
+OptiHash is a fast hashing algorithm to create secure and variable-sized checksums in C.
 
 - Allocates memory without dynamic memory allocation functions
+- Bit variants are `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1024`, `2048`, `4096` and `8196`
+- Clean and organized code with descriptive comments and variable names
+- Designed with resistance to collision, pre-image and reverse lookup attacks
 - Compiles with forward-compatible `C89`
-- Conforms to strict ISO C with `-pedantic-errors` enabled
-- Efficient without multithreading or processor-specific vectorization
-- Fast hashing speed without relying on compiler optimization
-- Hashes sequential bytes with dependence on each previous byte value
+- Conforms to strict ISO C and code quality standards
+- Efficient alternative to secure hashing algorithms at equivalent hash digest sizes
+- Fast without relying on multithreading or compiler optimization
 - Hashes large strings in segments with variable-length blocks of memory
+- Hashes sequential bytes with dependence on each previous byte value
 - Input with large files supported
 - Memory-safe with defined behavior
-- Minified and readable code with single-letter variable names
-- Only addition, bitwise AND and bitwise shift calculations used in simple expressions
-- Output character length can be `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512` or `1024`
-- Outputs an array of `unsigned char` integers between `0` and `15`
-- Suitable for all hashing purposes based on the digest length of each hasher variant
+- Minor changes to input creates major changes in digest output
+- Only addition, bitwise AND and bitwise shift calculations used in simple hashing formulas
+- Suitable for all hashing purposes based on the hash digest size of each variant
 
 #### Usage
 Clone the repository in the current directory with the command `git`.
 
 ``` console
-git clone https://github.com/frymimori/c-hasher.git
+git clone https://github.com/frymimori/c-optihash.git
 ```
 
 Navigate to the cloned repository's root directory with the command `cd`.
 
 ``` console
-cd c-hasher
+cd c-optihash
 ```
 
-The following example uses code from the file [test.c](https://github.com/frymimori/c-hasher/blob/main/test.c) to generate hash digests.
-
-``` c
-#include <stdio.h>
-#include "hasher.h"
-
-int main(int a, char * * b) {
-	FILE * c;
-	unsigned short d[16];
-	unsigned short e = 1024;
-	unsigned short f = 16;
-	unsigned short g = f;
-	unsigned short h = 0;
-	unsigned short * i = &g;
-	unsigned short * j = &h;
-	unsigned char k[1024];
-	unsigned char l[16];
-
-	if (a != 0) {
-		c = fopen(b[1], "rb");
-
-		if (c != (void *) 0) {
-			while (f != 0) {
-				f--;
-				d[f] = 254;
-			}
-
-			f = g;
-			g--;
-
-			while (e == 1024) {
-				e = fread(k, 1, 1024, c);
-				hasherE(d, i, j, e, k);
-			}
-
-			if (feof(c) != 0) {
-				fclose(c);
-				hasherL(d, f, g, l);
-
-				while (f != 0) {
-					f--;
-					printf("%x", l[f]);
-				}
-			} else {
-				printf("Error hashing file \"%s\".", b[1]);
-			}
-		} else {
-			printf("Error reading file \"%s\".", b[1]);
-		}
-	} else {
-		printf("Error hashing file without required file name argument.");
-	}
-
-	return 0;
-}
-```
-
-The function `hasherA()` outputs a 1-character digest.
-
-The function `hasherB()` outputs a 2-character digest.
-
-The function `hasherC()` outputs a 4-character digest.
-
-The function `hasherD()` outputs a 8-character digest.
-
-The function `hasherE()` outputs a 16-character digest.
-
-The function `hasherF()` outputs a 32-character digest.
-
-The function `hasherG()` outputs a 64-character digest.
-
-The function `hasherH()` outputs a 128-character digest.
-
-The function `hasherI()` outputs a 256-character digest.
-
-The function `hasherJ()` outputs a 512-character digest.
-
-The function `hasherK()` outputs a 1024-character digest.
-
-The first argument variable `d` is a pointer to an `unsigned short` array to store the hashed payload bytes.
-
-The default value is an empty array with a default length of `16`.
-
-The length is equivalent to the output length defined as as the bytes for the hash digest output before finalization.
-
-The second argument variable `i` is a pointer to modify the value of the variable `g`.
-
-The variable `g` is an `unsigned short` defined as the variable `f`.
-
-The third argument variable `j` is a pointer to modify the value of the variable `h`.
-
-The variable `h` is an `unsigned short` defined as `0`.
-
-The fourth argument variable `e` is the integer result from each `fread()` iteration defined as `1024`.
-
-The length should be modified based on the expected length of file input and efficiency requirements.
-
-The fifth argument variable `k` is a pointer to an `unsigned char` array to store the chunked file data result before hashing.
-
-The default value is an empty array for file data chunks with a default length of `1024`.
-
-The length should be modified based on efficiency requirements and should match the length of the variable `e` and other instances where `1024` is referenced as the memory buffer size for each chunked file data result.
-
-The minimum length is the value of the variable `h`.
-
-The function `hasherL()` adds entropy finalization and outputs the hash digest as an array of bytes for each hexadecimal digit.
-
-The first argument variable `d` is a pointer to the previous `unsigned short` array defined as the hashed payload bytes to finalize.
-
-The second argument variable `f` is the previous value defined as the output character length.
-
-The third argument variable `g` is the previous value modified by the variable `i` in each hashing iteration for entropy.
-
-The fourth argument variable `l` is a pointer to an `unsigned char` array to store the hashed bytes after finalization.
-
-The default value is an empty array with a default length of `16`.
-
-The length should match the length of the variable `d` and the value of the variable `f`.
+The following example uses code from the file [test.c](https://github.com/frymimori/c-optihash/blob/main/test.c) to generate hash digests.
 
 ``` console
-gcc -o c-hasher -pedantic-errors -std=c89 hasher.c test.c
+gcc -o c-optihash -pedantic-errors -std=c89 optihash.c test.c
 ```
 
-The output from the command `./c-hasher` is a hexadecimal hash digest string.
+The output from the command `./c-optihash` is a hexadecimal hash digest string.
 
 ``` console
-echo 123456789 > file
+echo 0123456789 > file
 
-./c-hasher file
-# f72e2e66353a7efa
+./c-optihash file
+# f1098fe98ba5c7f1e45d651c2d45681b909b927289a24dd980d73e35cc27165d
 ```
 
 The first command line argument value `file` is the file name to hash.
 
-These are the outputs for each character length variant.
+These are the outputs for each bit size variant.
 
 ``` console
-# hasherA()
-./c-hasher file
-# e
+# optiHash8Bit()
+./c-optihash file
+# bd
 
-# hasherB()
-./c-hasher file
-# b8
+# optiHash16Bit()
+./c-optihash file
+# 2b64
 
-# hasherC()
-./c-hasher file
-# acf8
+# optiHash32Bit()
+./c-optihash file
+# 62fcc667
 
-# hasherD()
-./c-hasher file
-# 5dc02d43
+# optiHash64Bit()
+./c-optihash file
+# e1b2d4340fb4d96b
 
-# hasherE()
-./c-hasher file
-# f72e2e66353a7efa
+# optiHash128Bit()
+./c-optihash file
+# a0543173c8b2b09c0db7cb9279f5fac8
 
-# hasherF()
-./c-hasher file
-# cfc68e84a832f9722bd17b25c3675340
+# optiHash256Bit()
+./c-optihash file
+# f1098fe98ba5c7f1e45d651c2d45681b909b927289a24dd980d73e35cc27165d
 
-# hasherG()
-./c-hasher file
-# 2855a606e7a549feb53edac6b955cdd3aba83e7e5c8a0ad3c2c395dfb1d0b552
+# optiHash512Bit()
+./c-optihash file
+# 81592399b60224e046d20f4ba4a82c71d7ee0f3f86ef0bb32ee5764e907243fb5384eac027afc3642cbba7407420893f8af5909ef5391270bf9281c93ea25e14
 
-# hasherH()
-./c-hasher file
-# cf0a72772c17f13c815122048dbe909da49ff5df1a67f13c891b9438e606deed2863f55d337d326f239841ac3ca68d9c3b743a6316c3064c5fbb436e0586fae7
+# optiHash1024Bit()
+./c-optihash file
+# b71a7c437b62da3acb66f1fe102a4f85558b5b1121b7976599e556fef8eedd42d8b806fa668737bd056f0d781704667811758aa8d3922f99b762e19e381e7576ed47e73b7bda3cb072773e3c998e18cd499f32ee1bbf4ad194875112be711c057cbea98ebc0fbe8f79f69a7f9f7d9362e17942dcb4ec23e32207f6a35e93fe28
 
-# hasherI()
-./c-hasher file
-# f36397a595fce01181d50f4a960e1cb0e2e733a373c0c519c763d20485fc6c344bc4681d6a6f3746f38618998db6deedacddc9386a677595ea2507802c177511bc641629a13968562fb3520ec6e262079a9fc83b6406725fbe52bb64b34a195537e59b0a318fb452424a533da5c9a625bbf8608ca9fbc8f97911b614c40bdbb1
+# optiHash2048Bit()
+./c-optihash file
+# 198d1976531836d5adcf106df7c476800d5fd98e1cf02c05c96d62d073e691104d276d54adb1367c633c0025dbeaff9d89e9f80d2bd655926cb299f2f67bc1a881456a202f44e2ce2e3d52701b9ad7b1f7de373bc006edc68aaf6574892713738297b560df1cf63c237c80054b320bcff4aab9ce6c58b8c7dcfaa524613b81684447706f6dbd9645bb8a53e1a0ae8bb022730496eae37efef68fb6f01a3ad328c6c6a660e6f86c55d834f6133917fc8c8844dd164c078ff9ab16a0df061af2dc523c1453d7b4b863a5076ee90b2dffcc6028c3f41786521c8397b0fb8307f214c6a5ffe1c5a4cd451f2860a5d6a405088103781c3393800ab89e30ad0a884fe2
 
-# hasherJ()
-./c-hasher file
-# e240c056b221e85fd036189985780b23b53edacef729aa08acddc9bc4fe398571e023be9019bdee566484553f7292623b53eda4258be1cb066c4ec7e7b06d6af54135e2f9e4ce019c7e7bf4a9ec88746fbccaeab3d32759da49ffd9147a549f67763dac6b1931c344b408be1c34c6cb8287c2ac635fc64721e02bfce73c80369c4382f53dd8675c60b4ee37e5cd789b2e8fe30b7551908b6c5e413f2318776345f85ca2a46107becbc6fc0a0e642575f3ac6f584e7716dbbae08aed82449dc24052de94a2a6d6cba267cf77afb709f5ccf665796af4e7dd29a103e4529a18f3d18a611ddb4b5b9361ae27a5b9217cc81c4bcbe4d90a5169eae0d03fa8fca185a
+# optiHash4096Bit()
+./c-optihash file
+# d96d494e2fc6d1de2c39afdb9cbc6a6ef2b7dd14655dd0fb3a17e10e5032033b8e8980f19913c958adab275f32ed8465b52b5ba189e369b09975be2a4a793e649b6ca4773249ea5a00f86a94516b91c899d1a45f7617872d2597c17e98bef5c6fed18ca344b45a52c4eeabc5eb22f32bfeb9d07161479f21e304b4bbc450205728e072ccd1d7df69b7aa15b4a183558ee25f192e4cf87837d4be1b253346618841d5323cc91b150af85c700df7d49ecc0f7205e0a7d08c25095dda146967e39b2e89105945a53409c7624922e68b01b0b5bb438dfb1e519c0bb026d6dc64ae9c7f528d64a50514a90792e15604088c51f7eedfc7a269924e66893c47d62ba964a68a89f7108186749babfb9695217b5ae2a94e968baacca0c7718f79000e4e4a54183457daa7b4d73fa69c9ed59ec477d3e55a44c8a6561f76e83131672f7f62fd6809a4d116a89ef438f3c31f94df8b5e4f5aff58c88a3ed5bc43ff8e0624175b24bd93497b5b0cd50196565f316e74c2e4333ba75c77d04af8f56abea9d0389bde35ad59293f1c6477ac0af43be999684ce9adb88a197c17d888eeeeb203c3910d20a1a4fd8f701aa8da0d1d608b79a64290c76e7506389174b0ce26f14f23ba560f0304bb7015c4c3e631daa6e0e60c2da2fdcc05db45d4f3a609ab25e024d0802457755649750bf7e0eb431fa3e3bed75bdef520d20e59bdbb55b66a627f
 
-# hasherK()
-./c-hasher file
-# cf0a32c3219bd6a71e0233a373c049fe31512a4250fce0110df0078862292e69cfa9e43862a549721e86105b3dbe9011053694b485f4aa006e0afd152c931c3c0d7ca6e1c34ce85792eff55bb1177ddbfb400780245d0369c76b1815a0704134cf2583abb9d92e61053694b401931cb06e8e56652c939011815960df1aeb52ca54135e27583275110d7c2ac63dbe1cb8a41b1815a0f42ee5e26b9c763db65a8c05b2332f960e14729aa96891c34c64febdf083abb19bdeedacd50f4a9682f134cfa12aceff677595664083a3734c64feb5369cf2dc177d5fd874ecfa9ec887cad0361891cb06d6a79aa12ac6b9d1e0194b408b65a0fc6cb8a413d280a070cd5fc6aba8d16ebb85591419f74144725726ae89598081584d098986bcd287d9f3d77053335768389affce1492fe0f1f02111c5fd71ad1b86cb7c6d69dab92623078fe1f184edd549ea6f3799750e3e559c22e0065b703cb10c68f514505e313efad4f970e76c9031010eaed50143f14d4b26c8e290466c6e7e01d0e2cea58268dce1a18cdc7411267e856715cb3f71fde6387187c134de36b4943cf6373b6a4e11fa74a01bbe02e157d25507f0651b8ed6ea314137baff54d093b4e30b7dcd70267e068fba28ca187cca072c0f8b75d5914710282dc3755642f69ff370607246d3fd8b541f4a1b0d53f0f23ee19eaa8fc84574ad71217f06c62d8ec513d4b518079
+# optiHash8192Bit()
+./c-optihash file
+# 562923353a1f03eba3bff6463c2c126a6ceeaf4fbe63d9880d533b15db02bbcfec96930d431247950935f616c4c84c11376ebf376ab524c9bfae132949f77b3fe4dac9ae84c4a2ee5e853ed2aef7e3c39247d5a8e33a3b3bba7711760c6cfa4e4ac3f7c374fcc6f4371aed287f80003f9c26f3256f5c3e90093d0abcc551a21accd66335ef04224e8e6d3aec75c132da540a19ae0c18a87fc020ae02fef76b97d8b886ba06f75f799fd6279fd21d8c3127167b91b15fe3a74c423116ec2c0a56c6eda63a165f4b2bfaaf3d104ba2a3a322df79de74d4e276d2dbe7f78eefff9575c337e364a4020e9e75b616a4f8f4ed610d8ece2c38c89fe040ce221e178b37b8f85662f2c90a6af84c4841b561e222808c1cf334942276726bdf8b0c4caab6461d5ebe4ca09c9509b53676d4e0704788e876cac6bf33df60a0fe0a9a71b212a0f4f0e95d098aca2834c49bdc3cca1e1a138733b4f4525eeec50666f448443db15dde1e7c8818ef30901e726e67db870848a6b242195aba489c989105b13272d0dc6c4384e472c6c2bb2fdb5c9cfa06966dae0e9cf0ece5590586c62430c097d838c61a160f832fb0f04e5aeac10262f0444039ad59da1a788414eb2c8c1a6e6a63d7830444a2ae3e15d67664481cd97358ae2e6cc8d05b2adf6d40fb92f3031a3beb71b9a3010c9bf0eeeae255803f5c86c39de3caa3e7cca2e1be88b6791c8aeb4d9420b235935bac3d4f8fb0b6a1c1c454b3c45eee361504ff2eed5adb04b050272de262ebe8d7b42208dfca44604bd6c1b27ae42a02382ad34ed934425a284ea5e5ed6711b0dd9e920b46a154d12befbde087a2896178a56e1e500cc416385a7fd71a7c61c35cc40ae4c95e65de06e3ed791e20a8f7183a0b825c92559ac0f79c9ea6353628317c14e796bd36e948610c0fbe35863d773c569e48c5533286077385bfd399300565346808030100a9175b7e5a935ba758df7c72e89c54d9bfd51efa36b128d8b284c427e6f52ab732d9468a2ea2226d6356edc09b21126a60f28b6e955a070dc1bfdbc24476b32fa8db7af32e097c99634f5956c40ab12930c52ac4559fad7f6225bc3fc284f9b3503ecd149da8e023fa5d306a131bd812519eafb0a0fb79d851f78fdbe7dd909c2c822aea359671697cab2703b88da455114be16ad1fbc3c80a6845efd7cc4b92568c90e263d2403e9fc791728ee990c8ee321d00ff6eb3d8b7748238b2591c45d94417c921d6058aa4ac2195f0ea5542acf95fed8fb3b43b32c129793e9711e9edf1f522a99fac7b0281361311d808536e87cb996883ed0b3776fc8988f767be5fe35f3bf0451c6d19bbed6026df7dc367571004dab50d198536739a5b2aa8be985a77f38c2ff6abeb1401adb4c0a66164ae74d60d76cc474fe39bbe516b0f01134621f25abe36b180d1e4fa87df8f40
 ```

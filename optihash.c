@@ -1,11 +1,11 @@
 /*
 	Each bit size variant is intentionally
 	repetitive while only changing the entropy index
-	mask. This is an integral constant for the
+	mask integral constant for the
 	benefit of memory efficiency and modularity.
 
-	Bit size variants less than optiHash256 shouldn't be
-	used for security purposes.
+	Bit size variants less than optiHash256
+        shouldn't be used for security purposes.
 */
 
 void optiHash8192Bit(unsigned long *inputIndexPointer, unsigned short *entropy, unsigned short *salt, unsigned short inputIndex, unsigned char *input) {
@@ -17,11 +17,12 @@ void optiHash8192Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -55,11 +56,12 @@ void optiHash4096Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -93,11 +95,12 @@ void optiHash2048Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -131,11 +134,12 @@ void optiHash1024Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -169,11 +173,12 @@ void optiHash512Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -207,11 +212,12 @@ void optiHash256Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -245,11 +251,12 @@ void optiHash128Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -283,11 +290,12 @@ void optiHash64Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -321,11 +329,12 @@ void optiHash32Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -359,11 +368,12 @@ void optiHash16Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -397,11 +407,12 @@ void optiHash8Bit(unsigned short *entropy, unsigned short *salt, unsigned short 
                 inputIndex--;
 
                 /*
-                        This redefines salt with a fast hashing formula
-                        that sums input at the curent index and the
-                        index of all hashed input. It never exceeds
-                        USHRT_MAX before masking with 16383 to avoid
-                        integral promotions and remainder calculations.
+                        This recalculates salt with a fast hashing
+                        formula that sums input at the curent index and
+                        bit variants of the current salt. It never
+                        exceeds USHRT_MAX before masking with 16383 to
+                        avoid integral promotions and remainder
+                        calculations.
 
                         101 is added to the masked result to add entropy
                         and escape zeroland.
@@ -438,9 +449,9 @@ void optiHashFinalize(unsigned short *entropy, unsigned short entropyHighIndex, 
 
 		/*
 			This redefines salt with a fast hashing formula
-			that sums with entropy at both indices and salt.
-			It never exceeds USHRT_MAX before masking with
-			8191.
+			that sums entropy at both indices and salt. It
+                        never exceeds USHRT_MAX before masking with
+                        8191.
 
 			1001 is added to the masked result to add
 			entropy and escape zeroland.

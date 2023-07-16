@@ -3,15 +3,15 @@
 
 int main(int argumentsCount, char **arguments) {
         /*
-                This example uses input data from a file, so a
-                FILE object is required.
+                This pointer is required because this example
+                uses input data from a file.
         */
         FILE *inputFile;
 
         /*
-                This is the index of the current byte of input
-                from inputFile. It's initialized as 0 and casted
-                to a pointer.
+                This integer is the index of the current byte of
+                input from inputFile. It's initialized as 0 and
+                casted to a pointer.
         */
         unsigned long inputIndex = 0;
         unsigned long *inputIndexPointer = &inputIndex;

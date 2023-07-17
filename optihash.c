@@ -408,6 +408,13 @@ void optiHashFinalize(unsigned short *entropy, unsigned short entropyHighIndex, 
         }
 
         /*
+         * This prepares the high and low indices for the second loop to ensure
+         * digest bytes are defined at the correct indices.
+         */
+        entropyHighIndex++;
+        entropyLowIndex--;
+
+        /*
          * This second loop hashes the second half of entropy while assigning
          * finalized bytes to digest.
          */

@@ -20,7 +20,8 @@ void optiHash8192Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -53,7 +54,8 @@ void optiHash4096Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -86,7 +88,8 @@ void optiHash2048Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -119,7 +122,8 @@ void optiHash1024Bit(unsigned long *inputIndexPointer, unsigned short *entropy, 
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -152,7 +156,8 @@ void optiHash512Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -185,7 +190,8 @@ void optiHash256Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -218,7 +224,8 @@ void optiHash128Bit(unsigned long *inputIndexPointer, unsigned short *entropy, u
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -251,7 +258,8 @@ void optiHash64Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -284,7 +292,8 @@ void optiHash32Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -317,7 +326,8 @@ void optiHash16Bit(unsigned long *inputIndexPointer, unsigned short *entropy, un
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -350,7 +360,8 @@ void optiHash8Bit(unsigned short *entropy, unsigned short *salt, unsigned short 
                  * exceeds USHRT_MAX before masking with 16383 to avoid integral
                  * promotions and remainder calculations.
                  *
-                 * 101 is added to the masked result to add entropy and escape zeroland.
+                 * The masked result adds 101 for additional entropy and to escape
+                 * zeroland.
                  */
                 (*salt) = ((input[inputIndex] + ((*salt) >> 1) + (*salt)) & 16383) + 101;
 
@@ -368,15 +379,14 @@ void optiHashFinalize(unsigned short *entropy, unsigned short entropyHighIndex, 
         unsigned short entropyLowIndex = 0;
 
         /*
-         * This loop finalizes the hash digest by iterating through entropy with both
-         * decrementing high and incrementing low indices.
+         * This first loop hashes the first half of entropy.
          */
-        while (entropyHighIndex != 0) {
-                entropyHighIndex--;
-
+        while (entropyLowIndex < entropyHighIndex) {
                 /*
-                 * This defines the current high index of entropy as salt.
+                 * This decrements the high index and defines the current high index of
+                 * entropy as salt.
                  */
+                entropyHighIndex--;
                 entropy[entropyHighIndex] = salt;
 
                 /*
@@ -384,19 +394,57 @@ void optiHashFinalize(unsigned short *entropy, unsigned short entropyHighIndex, 
                  * both indices and salt. It never exceeds USHRT_MAX before masking
                  * with 8191.
                  *
-                 * 1001 is added to the masked result to add entropy and escape
+                 * The masked result adds salt for additional entropy and escaping
                  * zeroland.
                  */
-                salt = ((entropy[entropyHighIndex] + entropy[entropyLowIndex] + ((entropyHighIndex + salt) >> 1) + entropyHighIndex) & 8191) + 1001;
+                salt = ((entropy[entropyHighIndex] + entropy[entropyLowIndex] + ((entropyHighIndex + salt) >> 1) + entropyHighIndex) & 8191) + salt;
 
                 /*
-                 * This defines a finalized byte from salt masked between 0x0 and 0xFF.
+                 * This defines the current low index of entropy as salt and increments
+                 * the low index.
+                 */
+                entropy[entropyLowIndex] = salt;
+                entropyLowIndex++;
+        }
+
+        /*
+         * This second loop hashes the second half of entropy while assigning
+         * finalized bytes to digest.
+         */
+        while (entropyHighIndex != 0) {
+                /*
+                 * This defines a finalized byte from salt masked between 0 and 255 at
+                 * the low index. This can be overwritten multiple times during
+                 * finalization.
+                 */
+                digest[entropyLowIndex] = salt & 255;
+
+                /*
+                 * This decrements the high index and defines the current high index of
+                 * entropy as salt.
+                 */
+                entropyHighIndex--;
+                entropy[entropyHighIndex] = salt;
+
+                /*
+                 * This redefines salt with a fast hashing formula that sums entropy at
+                 * both indices and salt. It never exceeds USHRT_MAX before masking
+                 * with 8191.
+                 *
+                 * The masked result adds salt for additional entropy and escaping
+                 * zeroland.
+                 */
+                salt = ((entropy[entropyHighIndex] + entropy[entropyLowIndex] + ((entropyHighIndex + salt) >> 1) + entropyHighIndex) & 8191) + salt;
+
+                /*
+                 * This defines a finalized byte from salt masked between 0 and 255.
                  * This can be overwritten multiple times during finalization.
                  */
                 digest[entropyHighIndex] = salt & 255;
 
                 /*
-                 * This defines the current low index of entropy as salt.
+                 * This defines the current low index of entropy as salt and increments
+                 * the low index.
                  */
                 entropy[entropyLowIndex] = salt;
                 entropyLowIndex++;

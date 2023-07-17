@@ -104,9 +104,11 @@ int main(int argumentsCount, char **arguments) {
                                 /*
                                  * This outputs each byte from digest in hexadecimal format.
                                  */
-                                while (digestIndex != 0) {
-                                        digestIndex--;
+                                digestIndex = 0;
+
+                                while (digestIndex != 32) {
                                         printf("%02x", digest[digestIndex]);
+                                        digestIndex++;
                                 }
                         } else {
                                 printf("Error hashing file \"%s\".", arguments[1]);
